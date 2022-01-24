@@ -1,23 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { TextField, Fab, List, ListItem } from "@material-ui/core";
 
 function App() {
+  const [messageList, setMessageList] = useState([]);
+  const [value, setValue] = useState("");
+
+  const author = {
+    user: "user",
+    bot: "bot",
+  };
+
+  const handleChange = (event) => {
+    const valueFromInput = event.target.value;
+    setValue(valueFromInput);
+  };
+
+  const handleSend = () => {
+    setMessageList([...messageList, { text: value, author: author.user }]);
+    setValue("");
+  };
+
+  useEffect(() => {
+    if (
+      messageList.length > 0 &&
+      messageList[messageList.length - 1].author === author.user
+    ) {
+      setTimeout(() => {
+        setMessageList([
+          ...messageList,
+          {
+            text: "Автоматическое сообщение",
+            author: author.bot,
+          },
+        ]);
+      }, 1500);
+    }
+  }, [messageList]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <List/>
+      <ListItem/>
+      <div className="messenger">
+        <div className="dashboard">
+          {messageList.map((message, index) => (
+            <div key={index} className="message">
+              <h6>{message.author}</h6>
+              <p className="messenger-text">{message.text}</p>
+            </div>
+          ))}
+        </div>
+        <div className="control-panel">
+          <TextField
+            style={{ margin: "0", width: "360px" }}
+            id="outlined-basic"
+            label="Outlined"
+            variant="outlined"
+            value={value}
+            onChange={handleChange}
+            autoFocus
+          />
+          <Fab onClick={handleSend} color="primary" aria-label="edit">
+            Edit!
+          </Fab>
+        </div>
+      </div>
     </div>
   );
 }

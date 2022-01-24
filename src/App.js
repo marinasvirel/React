@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import { TextField, Fab, List, ListItem } from "@material-ui/core";
 
 function App() {
   const [messageList, setMessageList] = useState([]);
@@ -20,32 +21,50 @@ function App() {
     setValue("");
   };
 
- useEffect(() => {
-   if(messageList.length > 0 && messageList[messageList.length - 1].author === author.user){
-     setTimeout(() => {
-      setMessageList([...messageList, {
-        text: "Автоматическое сообщение",
-        author: author.bot
-      }]);
-     }, 1500)
-   }
- }, [messageList])
+  useEffect(() => {
+    if (
+      messageList.length > 0 &&
+      messageList[messageList.length - 1].author === author.user
+    ) {
+      setTimeout(() => {
+        setMessageList([
+          ...messageList,
+          {
+            text: "Автоматическое сообщение",
+            author: author.bot,
+          },
+        ]);
+      }, 1500);
+    }
+  }, [messageList]);
 
   return (
     <div className="App">
+      <List/>
+      <ListItem/>
       <div className="messenger">
-      <div className="dashboard">
-        {messageList.map((message, index) => (
-          <div key={index} className="message">
-            <h6>{message.author}</h6>
-            <p className="messenger-text">{message.text}</p>
-          </div>
-        ))}
-      </div>
-      <div className="control-panel">
-        <input onChange={handleChange} value={value} />
-        <button onClick={handleSend}>Отправить</button>
-      </div>
+        <div className="dashboard">
+          {messageList.map((message, index) => (
+            <div key={index} className="message">
+              <h6>{message.author}</h6>
+              <p className="messenger-text">{message.text}</p>
+            </div>
+          ))}
+        </div>
+        <div className="control-panel">
+          <TextField
+            style={{ margin: "0", width: "360px" }}
+            id="outlined-basic"
+            label="Outlined"
+            variant="outlined"
+            value={value}
+            onChange={handleChange}
+            autoFocus
+          />
+          <Fab onClick={handleSend} color="primary" aria-label="edit">
+            Edit!
+          </Fab>
+        </div>
       </div>
     </div>
   );

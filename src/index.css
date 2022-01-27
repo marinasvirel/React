@@ -11,3 +11,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.routers{
+  background-color: #412241;
+  height: 100vh;
+  border-radius: 0;
+}
+
+.router-link{
+  text-decoration: none;
+  color: white;
+}
+
+.routers-list{
+  display: flex;
+  border-radius: 0;
+  width: 600px;
+}
+
+.routers-list-item{
+  background-color: transparent;
+}
+
+.chat{
+  display: flex;
+  background-color: #dbd3db;
+  border-radius: 0;
+}
+
+.chatList{
+  padding: 10px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0;
+}
+
+.message-list{
+  width: 600px;
+  border-radius: 0;
+}
+
+.message-list-item{
+  background-color: rgb(238, 232, 232);
+  margin: 10px;
+}
+

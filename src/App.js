@@ -40,17 +40,18 @@ function App() {
 
   return (
     <div className="App">
-      <List/>
-      <ListItem/>
+      <List>
+      <ListItem></ListItem>
+      </List>
       <div className="messenger">
-        <div className="dashboard">
+        <ul className="dashboard">
           {messageList.map((message, index) => (
-            <div key={index} className="message">
+            <li key={index} className="message">
               <h6>{message.author}</h6>
               <p className="messenger-text">{message.text}</p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
         <div className="control-panel">
           <TextField
             style={{ margin: "0", width: "360px" }}

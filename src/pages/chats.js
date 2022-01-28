@@ -33,7 +33,7 @@ const Chats = () => {
   const [chatList, setChatList] = useState(initialChats);
   let { chatId } = useParams();
   return chatList[chatId] ? (
-    <div className={'chat'}>
+    <div className={"chat"}>
       <Chatlist chats={chatList} chatId={chatId} />
       <MessageList messagelist={chatList[chatId].messages} />
     </div>

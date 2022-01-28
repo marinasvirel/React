@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Provider } from "react-redux";
+import Routers from "./pages/routers";
+import { store } from "./store/index";
 
-function App() {
+export const MyThemeContext = React.createContext({ theme: "dark" });
+export const MyLocalizationContext = React.createContext("en");
+export const DataContext = React.createContext({ name: "Baiden" });
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <MyThemeContext.Provider value={{ theme: "dark" }}>
+        <MyLocalizationContext.Provider value={"en"}>
+          <DataContext.Provider value={{ name: "John" }}>
+            <Routers />
+          </DataContext.Provider>
+        </MyLocalizationContext.Provider>
+      </MyThemeContext.Provider>
+    </Provider>
   );
-}
+};
 
 export default App;

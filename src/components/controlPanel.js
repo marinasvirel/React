@@ -1,13 +1,12 @@
 import { Fab, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addMessage } from "../store/messages/action";
 
 const ControlPanel = () => {
   const [value, setValue] = useState("");
-  const messages = useSelector((state) => state.messages.messageList);
-  const profileName = useSelector(state => state.profile.name);
+  const profileName = useSelector((state) => state.profile.name);
   const dispatch = useDispatch();
   const { chatId } = useParams();
 
@@ -16,32 +15,15 @@ const ControlPanel = () => {
     setValue(valueFromInput);
   };
 
-  const sendMessage = (message, author) => {
+  const handleButton = () => {
     dispatch(
       addMessage(chatId, {
-        text: message,
-        author: author,
+        text: value,
+        author: profileName,
       })
     );
     setValue("");
   };
-
-  const handleButton = () => {
-    sendMessage(value, profileName);
-  };
-
-  useEffect(() => {
-    const currentChat = messages[chatId];
-    if (
-      currentChat?.length > 0 &&
-      currentChat[currentChat?.length - 1].author === profileName
-    ) {
-      setTimeout(() => {
-        const currentMessage = "auto message";
-        sendMessage(currentMessage, "bot");
-      }, 1500);
-    }
-  }, [messages[chatId]]);
 
   return (
     <div className="control-panel">

@@ -1,6 +1,11 @@
+import ChatList from "../components/chatList";
+
+
 const NoChats = () => {
   return(
-    <div>NoChats</div>
+    <div>
+      <ChatList/>
+    </div>
   )
 };
 

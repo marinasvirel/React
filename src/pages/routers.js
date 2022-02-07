@@ -27,7 +27,7 @@ const Routers = () => {
       </List>
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/chats/:chatId" element={<Chats />} />
+        <Route path="/chats/:chatId" element={<Chats/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NoChats />} />
       </Routes>

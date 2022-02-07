@@ -1,4 +1,15 @@
-import profileReduser from "./profile/profileReduser";
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 
-export const store = createStore(profileReduser);
+import chatsReducer from "./chats/reducer";
+import messagesReducer from "./messages/reducer";
+import profileReducer from "./profile/profileReducer";
+
+
+
+const allRedusers = combineReducers({
+  chats: chatsReducer,
+  profile: profileReducer,
+  messages: messagesReducer,
+});
+
+export const store = createStore(allRedusers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

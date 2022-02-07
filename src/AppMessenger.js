@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { TextField, Fab, List, ListItem } from "@material-ui/core";
 
-function App() {
+function AppMess() {
   const [messageList, setMessageList] = useState([]);
   const [value, setValue] = useState("");
 
@@ -71,4 +71,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppMess;

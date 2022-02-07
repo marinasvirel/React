@@ -1,5 +1,1 @@
-const EXAMPLE_ACTION = "EXAMPLE_ACTION";
-
-export const toogleShowName = {
-  type: EXAMPLE_ACTION
-}; 
+export const CHANGE_NAME = "PROFILE::CHANGE_NAME";

@@ -5,9 +5,11 @@ import MessageList from "../components/messageList";
 const Chats = () => {
   return (
     <div className={"chat"}>
-      <Chatlist />
+      <Chatlist/>
+      <div className="message-field">
       <MessageList />
       <ControlPanel/>
+      </div>
     </div>
   );
 };

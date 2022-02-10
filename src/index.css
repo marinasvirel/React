@@ -3,3 +3,25 @@ body {
   font-family: sans-serif;
   background-color: #ebebf2;
 }
+
+.routers-list{
+  display: flex;
+  width: 20%;
+}
+
+.chat {
+  display: flex;
+}
+
+.message-field{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+}
+
+.message-list{
+  background-color: #cccdd0;
+  width: 300px;
+  height: 300px;
+  overflow: auto;
+}

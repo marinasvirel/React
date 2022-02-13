@@ -1,29 +1,36 @@
 import { Fab, TextField } from "@mui/material";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useCallback, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addMessage } from "../store/messages/action";
+import { getDatabase, ref, push, set } from "firebase/database";
+import firebase from "../service/firebase";
 
 const ControlPanel = () => {
   const [value, setValue] = useState("");
   const profileName = useSelector((state) => state.profile.name);
-  const dispatch = useDispatch();
   const { chatId } = useParams();
 
-  const handleChange = (event) => {
-    const valueFromInput = event.target.value;
-    setValue(valueFromInput);
-  };
+  const handleChange = useCallback(
+    (event) => {
+      const valueFromInput = event.target.value;
+      setValue(valueFromInput);
+    },
+    [value]
+  );
 
-  const handleButton = () => {
-    dispatch(
-      addMessage(chatId, {
-        text: value,
-        author: profileName,
-      })
-    );
+  const handleButton = useCallback(() => {
+    const message = {
+      text: value,
+      author: profileName,
+    };
+
+    const db = getDatabase(firebase);
+    const messageRef = ref(db, `/messages/${chatId}`);
+    const newMessageRef = push(messageRef);
+    set(newMessageRef, message);
+
     setValue("");
-  };
+  }, [value, chatId]);
 
   return (
     <div className="control-panel">

@@ -18,28 +18,32 @@ const SignUp = () => {
   const hadleSubmit = async (e) => {
     e.preventDefault();
     const auth = getAuth(firebase);
-    await createUserWithEmailAndPassword(auth, email, password)
+    await createUserWithEmailAndPassword(auth, email, password);
   };
 
   return (
     <form onSubmit={hadleSubmit}>
       <TextField
-      type="email" 
-      placeholder="e-mail" 
-      name="email" 
-      value={email}
-      onChange={handleEmailChange} />
-      <br/>
-      <br/>
+        type="email"
+        placeholder="e-mail"
+        name="email"
+        value={email}
+        onChange={handleEmailChange}
+      />
+      <br />
+      <br />
       <TextField
-      type="password" 
-      placeholder="password" 
-      name="password" 
-      value={password}
-      onChange={handlePasswordChange} />
-      <br/>
-      <br/>
-      <Button type="submit" variant="contained">Регистрация</Button>
+        type="password"
+        placeholder="password"
+        name="password"
+        value={password}
+        onChange={handlePasswordChange}
+      />
+      <br />
+      <br />
+      <Button type="submit" variant="contained">
+        Регистрация
+      </Button>
     </form>
   );
 };

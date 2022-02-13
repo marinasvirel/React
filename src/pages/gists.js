@@ -1,14 +1,13 @@
 import { useState, useCallback, useEffect } from "react";
 import { API_URL_PUBLIC } from "../contants/endpoints";
 
-
 const Gists = () => {
   const [gists, setGists] = useState([]);
 
   useEffect(() => {
     fetch(API_URL_PUBLIC)
       .then((response) => {
-        if (!response.ok){
+        if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`);
         }
 
@@ -19,7 +18,7 @@ const Gists = () => {
   }, []);
 
   const renderGist = useCallback(
-    (gist) => <li key={gist.id}>{gist.description || 'No description'}</li>,
+    (gist) => <li key={gist.id}>{gist.description || "No description"}</li>,
     []
   );
 

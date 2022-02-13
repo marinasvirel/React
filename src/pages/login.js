@@ -22,30 +22,34 @@ const Login = () => {
 
   const hadleSubmit = async (e) => {
     e.preventDefault();
-    await auth.signin({email, password}, () => {
-      navigate(from, {replace: true})
-    })
+    await auth.signin({ email, password }, () => {
+      navigate(from, { replace: true });
+    });
   };
 
   return (
     <form onSubmit={hadleSubmit}>
       <TextField
-      type="email" 
-      placeholder="e-mail" 
-      name="email" 
-      value={email}
-      onChange={handleEmailChange} />
-      <br/>
-      <br/>
+        type="email"
+        placeholder="e-mail"
+        name="email"
+        value={email}
+        onChange={handleEmailChange}
+      />
+      <br />
+      <br />
       <TextField
-      type="password" 
-      placeholder="password" 
-      name="password" 
-      value={password}
-      onChange={handlePasswordChange} />
-      <br/>
-      <br/>
-      <Button type="submit" variant="contained">Войти</Button>
+        type="password"
+        placeholder="password"
+        name="password"
+        value={password}
+        onChange={handlePasswordChange}
+      />
+      <br />
+      <br />
+      <Button type="submit" variant="contained">
+        Войти
+      </Button>
     </form>
   );
 };

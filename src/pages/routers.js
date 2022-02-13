@@ -54,8 +54,8 @@ const Routers = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route element={<RequiredAuth />}>
-          <Route path="/chats" element={<NoChats/>} />
-          <Route path="/chats/:chatId" element={<Chats/>} />
+          <Route path="/chats" element={<NoChats />} />
+          <Route path="/chats/:chatId" element={<Chats />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/gists" element={<Gists />} />
         </Route>

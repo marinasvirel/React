@@ -17,14 +17,14 @@ const chatsReducer = (state = initialState, action) => {
           },
         ],
       };
-      case DELETE_CHAT:
-        return {
-          ...state,
-          chatList: [
-            ...state.chatList.slice(0, action.index),
-            ...state.chatList.slice(action.index + 1),
-          ]
-        }
+    case DELETE_CHAT:
+      return {
+        ...state,
+        chatList: [
+          ...state.chatList.slice(0, action.index),
+          ...state.chatList.slice(action.index + 1),
+        ],
+      };
     default:
       return state;
   }

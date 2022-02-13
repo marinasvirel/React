@@ -1,12 +1,11 @@
 import ChatList from "../components/chatList";
 
-
 const NoChats = () => {
-  return(
+  return (
     <div>
-      <ChatList/>
+      <ChatList />
     </div>
-  )
+  );
 };
 
- export default NoChats;
+export default NoChats;
